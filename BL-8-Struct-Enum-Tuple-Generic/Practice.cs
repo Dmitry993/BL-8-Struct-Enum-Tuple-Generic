@@ -43,21 +43,24 @@ namespace BL_8_Struct_Enum_Tuple_Generic
 
             for (int i = 0; i < rectangle.Length; i++)
             {
-                rectangle[i].width = random.Next(1, 10);
-                rectangle[i].height = rectangle[i].width;
+                rectangle[i] = new Rectangle(
+                    random.Next(1, 10),
+                    random.Next(1, 10),
+                    random.Next(1, 10),
+                    random.Next(1, 10));
             }
 
             var dublicates = 0;
 
             for (var i = 0; i < rectangle.Length; i++)
             {
-                for (var j = i + 1; j < rectangle.Length - 1; j++)
+               for (var j = i + 1; j < rectangle.Length - 1; j++)
                 {
-                    if (rectangle[i].width == rectangle[j].width)
+                    if (rectangle[i].Equals(rectangle[j]))
                     {
                         dublicates++;
                     }
-                }
+               }
             }
 
             Console.WriteLine($"Number of duplicates: {dublicates}");
