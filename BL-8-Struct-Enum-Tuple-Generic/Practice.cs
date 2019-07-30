@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BL_8_Struct_Enum_Tuple_Generic
 {
@@ -14,8 +10,26 @@ namespace BL_8_Struct_Enum_Tuple_Generic
         /// <summary>
         /// BL8-P1/3. Cоздать структуру 2DRectangle, которая будет содержать ширину, высоту и координату.
         /// </summary>
+
+        public struct Rectangle
+        {
+            public int x;
+            public int y;
+            public int width;
+            public int height;
+
+            public Rectangle(int x, int y, int width, int height)
+            {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+            }
+        }
+
         public static void Lb8_P1_3()
         {
+            Rectangle rect = new Rectangle(5, 7, 12, 15);
         }
 
 
@@ -25,6 +39,31 @@ namespace BL_8_Struct_Enum_Tuple_Generic
         /// </summary>
         public static void Lb8_P2_3()
         {
+            Rectangle[] rectangle = new Rectangle[100];
+
+            for (int i = 0; i < rectangle.Length; i++)
+            {
+                rectangle[i] = new Rectangle(
+                    random.Next(1, 10),
+                    random.Next(1, 10),
+                    random.Next(1, 10),
+                    random.Next(1, 10));
+            }
+
+            var dublicates = 0;
+
+            for (var i = 0; i < rectangle.Length; i++)
+            {
+               for (var j = i + 1; j < rectangle.Length - 1; j++)
+                {
+                    if (rectangle[i].Equals(rectangle[j]))
+                    {
+                        dublicates++;
+                    }
+               }
+            }
+
+            Console.WriteLine($"Number of duplicates: {dublicates}");
         }
 
         /// <summary>
@@ -33,7 +72,7 @@ namespace BL_8_Struct_Enum_Tuple_Generic
         /// который содержит Title, Minutes, Seconds и AlbumYear. 
         /// </summary>
         public static void Lb8_P3_3_Anonymous()
-        {            
+        {
         }
     }
 }
